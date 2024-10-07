@@ -34,7 +34,7 @@ namespace Blog_Engine_2.Controllers
                 var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
                 await HttpContext.SignInAsync(identity.AuthenticationType, new(identity));
-                return RedirectToAction(nameof(PostCreate));
+                return RedirectToAction(nameof(Main));
             }
             else
             {
@@ -121,7 +121,7 @@ namespace Blog_Engine_2.Controllers
             return RedirectToAction(nameof(Main));
         }
 
-        [Authorize(Policy = Constants.AuthorPolicy)]
+        [Authorize]
         [HttpGet]
         public IActionResult Main()
         {

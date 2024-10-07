@@ -60,14 +60,17 @@
                 <img class="post-image" src="/home/pic/@p.Photo.Id" alt="Картинка поста">
             }
             <p class="post-content">@Html.Raw(p.Content)</p>
-            <div class="actions">
-                <button class="btn btn-primary" onclick="location.href='@Url.Action("PostEdit", "Home", new { id = p.Id })'">
-                    <i class="fas fa-edit"></i> Редактировать
-                </button>
-                <button class="btn btn-danger" onclick="location.href='@Url.Action("PostPreDelete", "Home", new { id = p.Id })'">
-                    <i class="fas fa-trash-alt"></i> Удалить
-                </button>
-            </div>
+            @if(User.IsInRole(RoleUser.Author.ToString()))
+            {
+                <div class="actions">
+                    <button class="btn btn-primary" onclick="location.href='@Url.Action("PostEdit", "Home", new { id = p.Id })'">
+                        <i class="fas fa-edit"></i> Редактировать
+                    </button>
+                    <button class="btn btn-danger" onclick="location.href='@Url.Action("PostPreDelete", "Home", new { id = p.Id })'">
+                        <i class="fas fa-trash-alt"></i> Удалить
+                    </button>
+                </div>
+            }
         </div>
     }
 </div>
