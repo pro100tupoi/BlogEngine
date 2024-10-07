@@ -1,0 +1,35 @@
+﻿@model LoginRequest?
+@{
+    ViewData["Title"] = "LoginRequest";
+}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="text-center mb-4">
+                <h1 class="display-4">Welcome</h1>
+            </div>
+            <h2 class="text-center mb-4">User Login</h2>
+            <form method="post" class="bg-light p-4 rounded">
+                <div class="mb-3">
+                    <label for="login" class="form-label">Login:</label>
+                    @Html.EditorFor(x => x.Login, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password:</label>
+                    @Html.PasswordFor(x => x.Password, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary me-2">Login</button>
+                    <a href="/home/register">Register</a>
+                @if (Model != null)
+                {
+                   <p>
+                   Неверный логин или пароль
+                   </p>
+                }
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+    

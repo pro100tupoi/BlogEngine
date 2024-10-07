@@ -1,0 +1,68 @@
+﻿@model PostCreateModel?
+@{
+    ViewData["Title"] = "PostCreaete";
+}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание блога</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        form {
+            width: 50%;
+            margin: 40px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+        }
+        input[type="file"] {
+            padding: 10px;
+        }
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <h1>Создать блог</h1>
+    <form action="" method="post" enctype="multipart/form-data">
+        <label for="title">Название блога:</label>
+        @Html.EditorFor(x => x.Header, new { htmlAttributes = new { @class = "form-control" } })
+        <span asp-validation-for="Header" class="text-danger"></span>
+        @* <input type="text" id="title" name="title" required> *@
+
+        <label for="content">Содержание блога:</label>
+        @Html.EditorFor(x => x.Content, new { htmlAttributes = new { @class = "form-control" } })
+        <span asp-validation-for="Content" class="text-danger"></span>
+        @* <textarea id="content" name="content" required></textarea> *@
+
+        <label for="image">Прикрепить картинку:</label>
+        <input type="file" name="Photo" accept="image/*">
+
+        <button type="submit">Запостить блог</button>
+    </form>
+</body>
+</html>

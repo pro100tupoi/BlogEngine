@@ -1,0 +1,31 @@
+﻿@using Blog_Engine_2.Objects
+@model Post
+@{
+    ViewData["Title"] = "PostPreDelete";
+}
+
+<h2>Удалить пост</h2>
+
+<h3>Вы уверены, что хотите удалить этот пост?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Header)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Header)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+    </dl>
+
+    <form asp-action="PostDelete" asp-route-id="@Model.Id">
+        <input type="submit" value="Удалить" class="btn btn-danger" />
+        <a asp-action="Main">Назад</a>
+    </form>
+</div>
